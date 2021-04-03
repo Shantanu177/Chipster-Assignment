@@ -1,0 +1,68 @@
+nav{
+   background-color: #4472C4;
+}
+#logo{
+   position:sticky;
+   color : #D9D9D9; 
+   font-family: 'Roboto Condensed', sans-serif;
+   font-size: 14px;
+}
+  
+a, u {
+   text-decoration: none;
+   font-family: 'Roboto Condensed', sans-serif;
+   color: inherit;
+}
+
+a:hover{
+   color: white;
+}
+
+#end{
+   color : #D9D9D9; 
+   font-family: 'Roboto Condensed', sans-serif;
+   font-size: 20px;
+}
+
+#IamBlock{
+   /* display: flex;                  /* establish flex container */
+   /* flex-direction: row;            default value; can be omitted */
+   /* flex-wrap: nowrap;              default value; can be omitted */ 
+   width: 27%;
+   height: 10%;
+   border: 2px solid #44546A;
+   margin: 2.7%;
+   box-shadow: 0 0 2px black;
+   float: left;
+   padding-left: 0%;
+   padding-right: 0%;
+}
+
+@media (max-width: 1026px) {
+   #end { display: none; }
+}
+#IamBlock:hover{
+   transform: scale(1.05);
+}
+table{
+   margin: 0px;
+   padding: 0px;
+}
+
+thead{
+   width: 100%;
+   font-family: 'Roboto Condensed', sans-serif;
+   font-size: 20px;
+   background-color:#44546A;
+   color: #D9D9D9;
+}
+
+#td{
+   padding: 1px;
+}
+/* 
+#th{
+   width: 100%;
+   margin: 1em;
+   padding: 1em;
+} */

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chipster</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/30ae666afb.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;700&display=swap" rel="stylesheet">
+    <script>
+        function getBrowserSize(){
+         var w, h;
+         if(typeof window.innerWidth != 'undefined')
+         {
+          w = window.innerWidth; //other browsers
+          h = window.innerHeight;
+         } 
+         else if(typeof document.documentElement != 'undefined' && typeof document.documentElement.clientWidth != 'undefined' && document.documentElement.clientWidth != 0) 
+         {
+          w =  document.documentElement.clientWidth; //IE
+          h = document.documentElement.clientHeight;
+         }
+         else{
+          w = document.body.clientWidth; //IE
+          h = document.body.clientHeight;
+         }
+       return {'width':w, 'height': h};
+        }
+      if(parseInt(getBrowserSize().width) < 1026){
+      document.getElementById("end").style.display = "none";
+      }
+    </script>
+    <link rel="stylesheet" href="/css/portfolio.css">
+    
+</head>
+<body>
+  <header>
+		<nav class="navbar">
+			<div class="m-1 p-2" id="logo">
+				<a href="/">
+          <img  src="http://localhost:8000/images/chip.jpg" width="40" height="40" alt="Home">  
+        </a>
+        <h3 class="p-2 pt-1 mt-2" style="display: inline;">Portfolio Dashboard</h3>
+			</div>
+      <div class="d-none d-md-block">
+     
+				<div id="end" class="d-flex justify-content-end mt-2 ml-3 p-1">
+          <ul class="nav">
+            <li class="nav-item">
+              <a class= "nav-link" href="#"> <span style="font-weight : 700;">My Portfolios</span>  </a>
+            </li>
+            <li class="nav-item">
+              <a class= "nav-link" href="#" >Create Portfolio </a>
+            </li>
+            <li class="nav-item"> 
+              <div class="dropdown m-1"> <p style="display: inline;"> test_user </p><i class="far fa-user"></i>
+                <button type="button" class="btn" data-bs-toggle="dropdown" aria-expanded="false">
+                  <span class="fas fa-caret-down"></span><span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" >
+                  <li><a class="dropdown-item" href="#">Profile</a></li>
+                  <li><a class="dropdown-item" href="#">Logout</a></li>
+                </ul>
+              </div> 
+            </li>
+          </ul>
+        </div>
+				</div>
+		</nav>
+	</header>
+  <div class="">
+      <% function recursion(response) {%>
+        <%for (let key in response) { %>
+          <%  if (typeof(response[key]) == 'object' ) { if (key.match(/^Portfolio/)) { %>
+            <div id="IamBlock">
+              <table class="table"> 
+                <thead>
+                  <tr style="width: 100%;" >
+                    <th colspan="2"><%= key %></th>
+                  </tr>
+                </thead>
+                <tbody>
+                <% } }%>      
+          <% if (typeof(response[key]) == 'object'   ) { recursion(response[key]); } else { %>
+                  <tr>
+                    <td>
+                      <%= key %>
+                     
+                    </td> 
+                    <td class="justify-content-end pr-5">
+                      <%= response[key]  %> 
+                     
+                    </td>
+                   </tr>
+                   
+                <%}%>
+              
+                     
+        <% }%>
+      </tbody>
+      </table> 
+      </div> 
+      <% }%>
+    <% recursion(response) %>
+  </div>
+</body>
+</html> 
